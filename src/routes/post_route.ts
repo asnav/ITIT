@@ -10,4 +10,6 @@ router.get('/:id', post.getPostById);
 
 router.post('/', post.addNewPost);
 
+router.put('/:id', post.putPostById);
+
 export default router;

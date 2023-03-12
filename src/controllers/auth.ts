@@ -6,9 +6,7 @@ import jwt from 'jsonwebtoken'
 
 function sendError(res: Response, error: string) {
     //console.log(error);
-    res.status(400).send({
-        'err': error
-    });
+    res.status(400).send(error);
 }
 
 const register = async (req: Request, res: Response) => {
@@ -191,7 +189,7 @@ const authenticateMiddleware = async (req: Request, res: Response, next: NextFun
 
         return next()
     } catch (err) {
-        return sendError(res, 'fail validating token')
+        return sendError(res, 'failed validating token')
     }
 
 }

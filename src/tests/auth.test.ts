@@ -47,7 +47,7 @@ describe("Auth Tests", ()=>{
             "username": SecondUserName,
             "password": SecondUserPassword 
         })
-        expect(response.statusCode).toEqual(400)
+        expect(response.text).toEqual('Email is already being used')
     })
 
     test("Register with taken username test",async ()=>{
@@ -56,7 +56,7 @@ describe("Auth Tests", ()=>{
             "username": userName,
             "password": SecondUserPassword 
         })
-        expect(response.statusCode).toEqual(400)
+        expect(response.text).toEqual('Username is already taken')
     })
 
     test("Login with email test",async ()=>{
@@ -88,7 +88,7 @@ describe("Auth Tests", ()=>{
             "identifier": userEmail,
             "password": SecondUserPassword
         })
-        expect(response.statusCode).not.toEqual(200)
+        expect(response.text).toEqual('Incorrect user or password')
         const access = response.body.accesstoken
         expect(access).toBeUndefined()
     })
